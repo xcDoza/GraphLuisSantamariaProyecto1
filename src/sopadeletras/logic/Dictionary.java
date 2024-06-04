@@ -9,5 +9,25 @@ package sopadeletras.logic;
  * @author luiss
  */
 public class Dictionary {
-    
+    private CustomList<String> words;
+
+    public Dictionary(CustomList<String> words) {
+        this.words = words;
+    }
+
+    public CustomList<String> getWords() {
+        return words;
+    }
+
+    public void setWords(CustomList<String> words) {
+        this.words = words;
+    }
+
+    public void displayDictionary() {
+        Node<String> current = words.getHead();
+        while (current != null) {
+            System.out.println(current.getData());
+            current = current.getNext();
+        }
+    }
 }
