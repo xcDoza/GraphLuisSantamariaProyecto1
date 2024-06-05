@@ -16,21 +16,38 @@ public class WordSearch {
 
     private Graph graph;
     private CustomList<String> dictionary;
+    private String searchMethod;
 
-    public WordSearch(File dictionaryFile, File boardFile) throws IOException {
+    public WordSearch(File dictionaryFile, File boardFile, String searchMethod) throws IOException {
         this.dictionary = FileUtils.loadDictionary(dictionaryFile);
         char[][] board = FileUtils.loadBoard(boardFile);
         this.graph = new Graph(board.length, board);
+        this.searchMethod = searchMethod;
     }
 
-    public void findWords(CustomList<String> dictionary) {
+    public void findWords(CustomList<String> dictionary, String searchMethod) {
         for (int i = 0; i < dictionary.size(); i++) {
             String word = dictionary.get(i);
-            if (graph.searchWord(word)) {
+            boolean found;
+            if ("BFS".equalsIgnoreCase(searchMethod)) {
+                found = graph.searchWordBFS(word);
+            } else {
+                found = graph.searchWordDFS(word);
+            }
+            if (found) {
                 System.out.println("La palabra " + word + " se encontró en el tablero.");
             } else {
                 System.out.println("La palabra " + word + " no se encontró en el tablero.");
             }
+        }
+    }
+
+    public void findSpecificWord(String word) {
+        boolean found = graph.searchWordBFS(word);
+        if (found) {
+            System.out.println("La palabra " + word + " se encontró en el tablero.");
+        } else {
+            System.out.println("La palabra " + word + " no se encontró en el tablero.");
         }
     }
 }

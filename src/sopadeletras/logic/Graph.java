@@ -52,14 +52,10 @@ public class Graph {
         }
     }
 
-    public boolean searchWord(String word) {
-        int n = board.length;
-        boolean[][] visited = new boolean[n][n];
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                int startNode = i * n + j;
-                if (dfs(startNode, word, 0, visited)) {
+    public boolean searchWordDFS(String word) {
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                if (dfs(row, col, word, 0)) {
                     return true;
                 }
             }
@@ -67,28 +63,113 @@ public class Graph {
         return false;
     }
 
-    private boolean dfs(int node, String word, int index, boolean[][] visited) {
-        int n = board.length;
-        int row = node / n;
-        int col = node % n;
-
+    private boolean dfs(int row, int col, String word, int index) {
         if (index == word.length()) {
             return true;
         }
 
-        if (row < 0 || col < 0 || row >= n || col >= n || visited[row][col] || board[row][col] != word.charAt(index)) {
+        if (row < 0 || row >= size || col < 0 || col >= size || board[row][col] != word.charAt(index)) {
             return false;
         }
 
-        visited[row][col] = true;
+        char temp = board[row][col];
+        board[row][col] = '*'; // Marca la celda como visitada
 
-        for (int neighbor = 0; neighbor < size * size; neighbor++) {
-            if (adjacencyMatrix[node][neighbor] && dfs(neighbor, word, index + 1, visited)) {
+        boolean found = dfs(row - 1, col, word, index + 1)
+                || dfs(row + 1, col, word, index + 1)
+                || dfs(row, col - 1, word, index + 1)
+                || dfs(row, col + 1, word, index + 1)
+                || dfs(row - 1, col - 1, word, index + 1)
+                || dfs(row - 1, col + 1, word, index + 1)
+                || dfs(row + 1, col - 1, word, index + 1)
+                || dfs(row + 1, col + 1, word, index + 1);
+
+        board[row][col] = temp; // Desmarca la celda
+
+        return found;
+    }
+
+    public boolean searchWordBFS(String word) {
+        int rows = board.length;
+        int cols = board[0].length;
+
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (board[row][col] == word.charAt(0)) {
+                    if (bfs(row, col, word)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean bfs(int startRow, int startCol, String word) {
+        int[] rowDirections = {-1, -1, -1, 0, 0, 1, 1, 1};
+        int[] colDirections = {-1, 0, 1, -1, 1, -1, 0, 1};
+
+        CustomCola<NodePosition> queue = new CustomCola<>();
+        queue.enqueue(new NodePosition(startRow, startCol, 0));
+
+        while (!queue.isEmpty()) {
+            NodePosition current = queue.dequeue();
+            int currentRow = current.getRow();
+            int currentCol = current.getCol();
+            int currentIndex = current.getIndex();
+
+            if (currentIndex == word.length() - 1) {
                 return true;
+            }
+
+            board[currentRow][currentCol] = '.'; // Marcar la letra actual como visitada
+
+            for (int d = 0; d < 8; d++) {
+                int newRow = currentRow + rowDirections[d];
+                int newCol = currentCol + colDirections[d];
+                int newIndex = currentIndex + 1;
+
+                if (isValid(newRow, newCol, word, newIndex)) {
+                    queue.enqueue(new NodePosition(newRow, newCol, newIndex));
+                }
             }
         }
 
-        visited[row][col] = false;
         return false;
+    }
+
+    private boolean isValid(int row, int col, String word, int index) {
+        if (row < 0 || row >= board.length || col < 0 || col >= board[0].length) {
+            return false;
+        }
+        if (board[row][col] != word.charAt(index)) {
+            return false;
+        }
+        return true;
+    }
+
+    private class NodePosition {
+
+        private int row;
+        private int col;
+        private int index;
+
+        public NodePosition(int row, int col, int index) {
+            this.row = row;
+            this.col = col;
+            this.index = index;
+        }
+
+        public int getRow() {
+            return row;
+        }
+
+        public int getCol() {
+            return col;
+        }
+
+        public int getIndex() {
+            return index;
+        }
     }
 }
