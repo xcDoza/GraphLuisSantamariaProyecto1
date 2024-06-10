@@ -4,11 +4,25 @@
  */
 package sopadeletras.gui;
 
+import sopadeletras.SopaDeLetras;
+import sopadeletras.logic.WordSearch;
+import sopadeletras.logic.CustomList;
+import sopadeletras.util.FileUtils;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author luiss
  */
 public class MainFrame extends javax.swing.JFrame {
+
+    private CustomList<String> dictionary;
+    private char[][] board;
 
     /**
      * Creates new form MainFrame
@@ -62,6 +76,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
 
         NodoGrafo1.setEditable(false);
+        NodoGrafo1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo1ActionPerformed(evt);
@@ -70,6 +85,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, 60));
 
         NodoGrafo2.setEditable(false);
+        NodoGrafo2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo2ActionPerformed(evt);
@@ -78,6 +94,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, 60));
 
         NodoGrafo3.setEditable(false);
+        NodoGrafo3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo3ActionPerformed(evt);
@@ -86,6 +103,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, 60));
 
         NodoGrafo4.setEditable(false);
+        NodoGrafo4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo4ActionPerformed(evt);
@@ -94,6 +112,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, 60));
 
         NodoGrafo5.setEditable(false);
+        NodoGrafo5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo5ActionPerformed(evt);
@@ -102,6 +121,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, 60));
 
         NodoGrafo6.setEditable(false);
+        NodoGrafo6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo6ActionPerformed(evt);
@@ -110,6 +130,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, 60));
 
         NodoGrafo7.setEditable(false);
+        NodoGrafo7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo7ActionPerformed(evt);
@@ -118,6 +139,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, 60));
 
         NodoGrafo8.setEditable(false);
+        NodoGrafo8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo8ActionPerformed(evt);
@@ -126,6 +148,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, 60));
 
         NodoGrafo9.setEditable(false);
+        NodoGrafo9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo9ActionPerformed(evt);
@@ -134,6 +157,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, 60));
 
         NodoGrafo10.setEditable(false);
+        NodoGrafo10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo10ActionPerformed(evt);
@@ -142,6 +166,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, 60));
 
         NodoGrafo11.setEditable(false);
+        NodoGrafo11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo11ActionPerformed(evt);
@@ -150,6 +175,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, 60));
 
         NodoGrafo12.setEditable(false);
+        NodoGrafo12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo12ActionPerformed(evt);
@@ -158,6 +184,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, 60));
 
         NodoGrafo13.setEditable(false);
+        NodoGrafo13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo13ActionPerformed(evt);
@@ -166,6 +193,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo13, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, 60));
 
         NodoGrafo14.setEditable(false);
+        NodoGrafo14.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo14ActionPerformed(evt);
@@ -174,6 +202,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, 60));
 
         NodoGrafo15.setEditable(false);
+        NodoGrafo15.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo15ActionPerformed(evt);
@@ -182,6 +211,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, 60));
 
         NodoGrafo16.setEditable(false);
+        NodoGrafo16.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         NodoGrafo16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NodoGrafo16ActionPerformed(evt);
@@ -190,9 +220,19 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(NodoGrafo16, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, 60));
 
         Diccionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Diccionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DiccionarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(Diccionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 170, 40));
 
         BuscarPalabras.setText("Buscar Palabras");
+        BuscarPalabras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarPalabrasActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuscarPalabras, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 170, 40));
 
         BuscarPalabra.setText("Buscar Palabra");
@@ -203,6 +243,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(GuardarDiccionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 150, 40));
 
         CargarArchivo.setText("Cargar Archivo");
+        CargarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CargarArchivoActionPerformed(evt);
+            }
+        });
         getContentPane().add(CargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 160, 40));
 
         pack();
@@ -272,6 +317,80 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NodoGrafo16ActionPerformed
 
+    private void DiccionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiccionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DiccionarioActionPerformed
+
+    private void CargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarArchivoActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+
+            try {
+                // Cargar el diccionario y el tablero desde el archivo
+                dictionary = FileUtils.loadDictionary(selectedFile);
+                board = FileUtils.loadBoard(selectedFile);
+
+                // Actualizar el JComboBox con las palabras del diccionario
+                Diccionario.removeAllItems();
+                CustomList.Node<String> current = dictionary.getHead();
+                while (current != null) {
+                    Diccionario.addItem(current.getData());
+                    current = current.getNext();
+                }
+
+                // Actualizar el tablero en la interfaz gráfica
+                NodoGrafo1.setText(String.valueOf(board[0][0]));
+                NodoGrafo2.setText(String.valueOf(board[0][1]));
+                NodoGrafo3.setText(String.valueOf(board[0][2]));
+                NodoGrafo4.setText(String.valueOf(board[0][3]));
+                NodoGrafo5.setText(String.valueOf(board[1][0]));
+                NodoGrafo6.setText(String.valueOf(board[1][1]));
+                NodoGrafo7.setText(String.valueOf(board[1][2]));
+                NodoGrafo8.setText(String.valueOf(board[1][3]));
+                NodoGrafo9.setText(String.valueOf(board[2][0]));
+                NodoGrafo10.setText(String.valueOf(board[2][1]));
+                NodoGrafo11.setText(String.valueOf(board[2][2]));
+                NodoGrafo12.setText(String.valueOf(board[2][3]));
+                NodoGrafo13.setText(String.valueOf(board[3][0]));
+                NodoGrafo14.setText(String.valueOf(board[3][1]));
+                NodoGrafo15.setText(String.valueOf(board[3][2]));
+                NodoGrafo16.setText(String.valueOf(board[3][3]));
+
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Error al cargar el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_CargarArchivoActionPerformed
+
+    private void BuscarPalabrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarPalabrasActionPerformed
+        // Crear un cuadro de diálogo para seleccionar el método de búsqueda
+        String[] options = {"BFS", "DFS"};
+        String selectedMethod = (String) JOptionPane.showInputDialog(null, "Seleccione el método de búsqueda",
+                "Método de Búsqueda", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        if (selectedMethod != null) {
+            if (dictionary != null && board != null) {
+                // Configurar y crear el objeto WordSearch
+                WordSearch wordSearch = new WordSearch(dictionary, board, selectedMethod);
+                
+                // Llamar al método findWords para encontrar todas las palabras
+                wordSearch.findWords();
+                
+                // Mostrar las palabras encontradas en un cuadro de diálogo
+                StringBuilder wordsFound = new StringBuilder();
+                for (String word : wordSearch.getWordsFound()) {
+                    wordsFound.append(word).append("\n");
+                }
+                JOptionPane.showMessageDialog(this, wordsFound.toString(), "Palabras Encontradas", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: debe cargar un archivo primero", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_BuscarPalabrasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,16 +405,24 @@ public class MainFrame extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

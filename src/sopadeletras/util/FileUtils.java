@@ -15,12 +15,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- *
- * @author luiss
+ * Clase de utilidad para cargar y guardar archivos de diccionario y tablero.
  */
 public class FileUtils {
 
+    /**
+     * Carga un diccionario desde un archivo.
+     *
+     * @param file El archivo que contiene el diccionario.
+     * @return El diccionario cargado.
+     * @throws IOException Si ocurre un error de lectura en el archivo.
+     */
     public static CustomList<String> loadDictionary(File file) throws IOException {
+        System.out.println("Loading dictionary from file: " + file.getAbsolutePath());
         BufferedReader reader = new BufferedReader(new FileReader(file));
         CustomList<String> dictionary = new CustomList<>();
         String line;
@@ -45,6 +52,13 @@ public class FileUtils {
         return dictionary;
     }
 
+    /**
+     * Carga un tablero desde un archivo.
+     *
+     * @param file El archivo que contiene el tablero.
+     * @return El tablero cargado.
+     * @throws IOException Si ocurre un error de lectura en el archivo.
+     */
     public static char[][] loadBoard(File file) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
         CustomArray boardArray = new CustomArray(16);
@@ -78,6 +92,13 @@ public class FileUtils {
         return board;
     }
 
+    /**
+     * Guarda un diccionario en un archivo.
+     *
+     * @param dictionary El diccionario a guardar.
+     * @param file El archivo en el que se guardará el diccionario.
+     * @throws IOException Si ocurre un error al escribir en el archivo.
+     */
     public static void saveDictionary(CustomList<String> dictionary, File file) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
             writer.newLine();

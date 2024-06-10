@@ -10,13 +10,19 @@ import sopadeletras.logic.CustomCola;
 import sopadeletras.logic.CustomList;
 
 /**
- *
- * @author luiss
+ * Clase que representa un grafo personalizado utilizado para la búsqueda de
+ * palabras en una sopa de letras.
  */
 public class CustomGraph {
 
-    private Node[][] nodes;
+    private Node[][] nodes; // Matriz de nodos que representa el grafo.
 
+    /**
+     * Constructor de la clase CustomGraph.
+     *
+     * @param board El tablero de la sopa de letras representado como una matriz
+     * de caracteres.
+     */
     public CustomGraph(char[][] board) {
         int rows = board.length;
         int cols = board[0].length;
@@ -44,6 +50,13 @@ public class CustomGraph {
         }
     }
 
+    /**
+     * Realiza una búsqueda de palabras utilizando el algoritmo BFS
+     * (Breadth-First Search).
+     *
+     * @param word La palabra a buscar en el grafo.
+     * @return true si la palabra fue encontrada, false de lo contrario.
+     */
     public boolean searchWordBFS(String word) {
         for (int i = 0; i < nodes.length; i++) {
             for (int j = 0; j < nodes[i].length; j++) {
@@ -55,6 +68,59 @@ public class CustomGraph {
         return false;
     }
 
+    /**
+     * Realiza una búsqueda de palabras utilizando el algoritmo BFS
+     * (Breadth-First Search) y devuelve el árbol de búsqueda.
+     *
+     * @param word La palabra a buscar en el grafo.
+     * @return El árbol de búsqueda generado durante la búsqueda de palabras.
+     */
+    public SingleGraph searchWordBFSWithTree(String word) {
+        for (int i = 0; i < nodes.length; i++) {
+            for (int j = 0; j < nodes[i].length; j++) {
+                SingleGraph tree = new SingleGraph("BFS Tree");
+                tree.setStrict(false);
+                tree.setAutoCreate(true);
+
+                if (searchWordBFSFromNodeWithTree(nodes[i][j], word, tree)) {
+                    return tree;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Realiza una búsqueda de palabras utilizando el algoritmo DFS (Depth-First
+     * Search).
+     *
+     * @param word La palabra a buscar en el grafo.
+     * @return true si la palabra fue encontrada, false de lo contrario.
+     */
+    public boolean searchWordDFS(String word) {
+        for (int i = 0; i < nodes.length; i++) {
+            for (int j = 0; j < nodes[0].length; j++) {
+                Node currentNode = nodes[i][j];
+                if (currentNode.getData() == word.charAt(0)) {
+                    // Iniciar la búsqueda de la palabra desde el nodo actual
+                    CustomList<Node> visitedList = new CustomList<>();
+                    if (searchWordDFSFromNode(currentNode, word, 0, visitedList)) {
+                        return true; // La palabra fue encontrada
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Método privado que realiza una búsqueda de palabras utilizando el
+     * algoritmo BFS desde un nodo específico.
+     *
+     * @param startNode El nodo desde el cual comenzar la búsqueda.
+     * @param word La palabra a buscar.
+     * @return true si la palabra fue encontrada, false de lo contrario.
+     */
     private boolean searchWordBFSFromNode(Node startNode, String word) {
         CustomCola<Node> queue = new CustomCola<>();
         CustomList<Node> visitedList = new CustomList<>();
@@ -83,21 +149,15 @@ public class CustomGraph {
         return false;
     }
 
-    public SingleGraph searchWordBFSWithTree(String word) {
-        for (int i = 0; i < nodes.length; i++) {
-            for (int j = 0; j < nodes[i].length; j++) {
-                SingleGraph tree = new SingleGraph("BFS Tree");
-                tree.setStrict(false);
-                tree.setAutoCreate(true);
-
-                if (searchWordBFSFromNodeWithTree(nodes[i][j], word, tree)) {
-                    return tree;
-                }
-            }
-        }
-        return null;
-    }
-
+    /**
+     * Método privado que realiza una búsqueda de palabras utilizando el
+     * algoritmo BFS desde un nodo específico y construye un árbol de búsqueda.
+     *
+     * @param startNode El nodo desde el cual comenzar la búsqueda.
+     * @param word La palabra a buscar.
+     * @param tree El árbol de búsqueda que se está construyendo.
+     * @return true si la palabra fue encontrada, false de lo contrario.
+     */
     private boolean searchWordBFSFromNodeWithTree(Node startNode, String word, Graph tree) {
         CustomCola<Node> queue = new CustomCola<>();
         CustomList<Node> visitedList = new CustomList<>();
@@ -123,8 +183,8 @@ public class CustomGraph {
                 while (neighborNode != null) {
                     Node neighbor = neighborNode.getData();
                     if (!visitedList.contains(neighbor) && !queue.contains(neighbor)) {
-                    queue.enqueue(neighbor);
-                    visitedList.add(neighbor);
+                        queue.enqueue(neighbor);
+                        visitedList.add(neighbor);
 
                         String neighborId = neighbor.getRow() + "," + neighbor.getCol();
                         tree.addNode(neighborId).setAttribute("ui.label", neighbor.getData());
@@ -137,23 +197,17 @@ public class CustomGraph {
         }
         return false;
     }
-    
-    public boolean searchWordDFS(String word) {
-        for (int i = 0; i < nodes.length; i++) {
-            for (int j = 0; j < nodes[0].length; j++) {
-                Node currentNode = nodes[i][j];
-                if (currentNode.getData() == word.charAt(0)) {
-                    // Iniciar la búsqueda de la palabra desde el nodo actual
-                    CustomList<Node> visitedList = new CustomList<>();
-                    if (searchWordDFSFromNode(currentNode, word, 0, visitedList)) {
-                        return true; // La palabra fue encontrada
-                    }
-                }
-            }
-        }
-        return false;
-    }
 
+    /**
+     * Método privado que realiza una búsqueda de palabras utilizando el
+     * algoritmo DFS desde un nodo específico.
+     *
+     * @param currentNode El nodo actual en la búsqueda.
+     * @param word La palabra a buscar.
+     * @param index El índice de la letra actual en la palabra.
+     * @param visitedList La lista de nodos visitados durante la búsqueda.
+     * @return true si la palabra fue encontrada, false de lo contrario.
+     */
     private boolean searchWordDFSFromNode(Node currentNode, String word, int index, CustomList<Node> visitedList) {
         if (index == word.length() - 1) {
             return true; // Se encontró la palabra completa
@@ -175,16 +229,25 @@ public class CustomGraph {
 
         visitedList.remove(currentNode);
         return false;
-
     }
 
+    /**
+     * Clase interna que representa un nodo en el grafo.
+     */
     public class Node {
 
-        private char data;
-        private int row;
-        private int col;
-        private CustomList<Node> neighbors;
+        private char data; // El dato almacenado en el nodo.
+        private int row; // La fila en la que se encuentra el nodo en la matriz.
+        private int col; // La columna en la que se encuentra el nodo en la matriz.
+        private CustomList<Node> neighbors; // Lista de nodos vecinos.
 
+        /**
+         * Constructor de la clase Node.
+         *
+         * @param data El dato que contiene el nodo.
+         * @param row La fila en la que se encuentra el nodo en la matriz.
+         * @param col La columna en la que se encuentra el nodo en la matriz.
+         */
         public Node(char data, int row, int col) {
             this.data = data;
             this.row = row;
@@ -192,22 +255,47 @@ public class CustomGraph {
             this.neighbors = new CustomList<>();
         }
 
+        /**
+         * Obtiene el dato almacenado en el nodo.
+         *
+         * @return El dato del nodo.
+         */
         public char getData() {
             return data;
         }
 
+        /**
+         * Obtiene la fila en la que se encuentra el nodo.
+         *
+         * @return La fila del nodo.
+         */
         public int getRow() {
             return row;
         }
 
+        /**
+         * Obtiene la columna en la que se encuentra el nodo.
+         *
+         * @return La columna del nodo.
+         */
         public int getCol() {
             return col;
         }
 
+        /**
+         * Añade un nodo vecino al nodo actual.
+         *
+         * @param neighbor El nodo vecino a añadir.
+         */
         public void addNeighbor(Node neighbor) {
             this.neighbors.add(neighbor);
         }
 
+        /**
+         * Obtiene la lista de nodos vecinos del nodo.
+         *
+         * @return La lista de nodos vecinos.
+         */
         public CustomList<Node> getNeighbors() {
             return neighbors;
         }
