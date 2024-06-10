@@ -53,4 +53,15 @@ public class CustomCola<T> {
     public boolean isEmpty() {
         return this.front == null;
     }
+
+    public boolean contains(T node) {
+        Node<T> current = front;
+        while (current != null) {
+            if (current.data.equals(node)) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
 }

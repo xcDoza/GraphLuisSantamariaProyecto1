@@ -24,10 +24,10 @@ public class Dictionary {
     }
 
     public void displayDictionary() {
-        Node<String> current = words.getHead();
+        CustomList.Node<String> current = words.getHead();
         while (current != null) {
-            System.out.println(current.getData());
-            current = current.getNext();
+            System.out.println(current.data);
+            current = current.next;
         }
     }
 }

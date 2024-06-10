@@ -6,9 +6,12 @@ package sopadeletras.util;
 
 import sopadeletras.logic.CustomList;
 import sopadeletras.logic.CustomArray;
+import sopadeletras.logic.CustomList.Node;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 /**
@@ -73,5 +76,20 @@ public class FileUtils {
             board[i / 4][i % 4] = boardArray.get(i);
         }
         return board;
+    }
+
+    public static void saveDictionary(CustomList<String> dictionary, File file) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+            writer.newLine();
+            writer.write("dic");
+            writer.newLine();
+            Node<String> current = dictionary.getHead();
+            while (current != null) {
+                writer.write(" " + current.getData());
+                writer.newLine();
+                current = current.getNext();
+            }
+            writer.write("/dic");
+        }
     }
 }

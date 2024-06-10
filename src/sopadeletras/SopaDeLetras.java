@@ -5,13 +5,13 @@
 package sopadeletras;
 
 import sopadeletras.logic.CustomList;
+import sopadeletras.logic.CustomList.Node;
 import sopadeletras.util.FileUtils;
+import javax.swing.JFileChooser;
+import sopadeletras.logic.WordSearch;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
-import javax.swing.JFileChooser;
-import sopadeletras.logic.Node;
-import sopadeletras.logic.WordSearch;
 
 /**
  *
@@ -51,25 +51,36 @@ public class SopaDeLetras {
                     System.out.println();
                 }
 
+                // Configurar y crear el objeto WordSearch
                 Scanner scanner = new Scanner(System.in);
-                System.out.println("Seleccione el método de búsqueda (DFS o BFS):");
-                String searchMethod = scanner.nextLine().toUpperCase();
+                System.out.println("Ingrese el método de búsqueda (BFS/DFS):");
+                String searchMethod = scanner.nextLine();
 
-                // Crear instancia de WordSearch con el diccionario y el tablero cargados
                 WordSearch wordSearch = new WordSearch(selectedFile, selectedFile, searchMethod);
 
-                // Buscar palabras en el tablero
-                long startTime = System.currentTimeMillis();
-                wordSearch.findWords(dictionary, searchMethod);
-                long endTime = System.currentTimeMillis();
-                long elapsedTime = endTime - startTime;
-                System.out.println("Tiempo total en encontrar todas las palabras: " + elapsedTime + " milisegundos");
+                // Llamar al método findWords para encontrar todas las palabras
+                wordSearch.findWords();
 
                 // Buscar una palabra específica
-                System.out.println("Ingrese una palabra para buscar en el tablero:");
-                String specificWord = scanner.nextLine();
-                wordSearch.findSpecificWord(specificWord);
+                while (true) {
+                    System.out.println("Ingrese una palabra para buscar en el tablero (o 'salir' para terminar):");
+                    String specificWord = scanner.nextLine();
+                    
+                    if ("salir".equalsIgnoreCase(specificWord)) {
+                        break;
+                    }
 
+                    if (!wordSearch.findSpecificWord(specificWord)) {
+                        System.out.println("La palabra " + specificWord + " no se encontró en el tablero.");
+                        System.out.println("¿Desea agregar la palabra al diccionario? (s/n):");
+                        String addWord = scanner.nextLine();
+                        if ("s".equalsIgnoreCase(addWord)) {
+                            wordSearch.addToDictionary(specificWord);
+                            FileUtils.saveDictionary(wordSearch.getDictionary(), selectedFile);
+                            System.out.println("La palabra " + specificWord + " ha sido agregada al diccionario.");
+                        }
+                    }
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

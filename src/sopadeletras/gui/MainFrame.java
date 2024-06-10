@@ -26,21 +26,251 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        NodoGrafo1 = new javax.swing.JTextField();
+        NodoGrafo2 = new javax.swing.JTextField();
+        NodoGrafo3 = new javax.swing.JTextField();
+        NodoGrafo4 = new javax.swing.JTextField();
+        NodoGrafo5 = new javax.swing.JTextField();
+        NodoGrafo6 = new javax.swing.JTextField();
+        NodoGrafo7 = new javax.swing.JTextField();
+        NodoGrafo8 = new javax.swing.JTextField();
+        NodoGrafo9 = new javax.swing.JTextField();
+        NodoGrafo10 = new javax.swing.JTextField();
+        NodoGrafo11 = new javax.swing.JTextField();
+        NodoGrafo12 = new javax.swing.JTextField();
+        NodoGrafo13 = new javax.swing.JTextField();
+        NodoGrafo14 = new javax.swing.JTextField();
+        NodoGrafo15 = new javax.swing.JTextField();
+        NodoGrafo16 = new javax.swing.JTextField();
+        Diccionario = new javax.swing.JComboBox<>();
+        BuscarPalabras = new javax.swing.JButton();
+        BuscarPalabra = new javax.swing.JButton();
+        IngresarPalabraParaBuscar = new javax.swing.JTextField();
+        GuardarDiccionario = new javax.swing.JButton();
+        CargarArchivo = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 86, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Sopa De Letras");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
+
+        NodoGrafo1.setEditable(false);
+        NodoGrafo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, 60));
+
+        NodoGrafo2.setEditable(false);
+        NodoGrafo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, 60));
+
+        NodoGrafo3.setEditable(false);
+        NodoGrafo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, 60));
+
+        NodoGrafo4.setEditable(false);
+        NodoGrafo4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, 60));
+
+        NodoGrafo5.setEditable(false);
+        NodoGrafo5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, 60));
+
+        NodoGrafo6.setEditable(false);
+        NodoGrafo6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, 60));
+
+        NodoGrafo7.setEditable(false);
+        NodoGrafo7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, 60));
+
+        NodoGrafo8.setEditable(false);
+        NodoGrafo8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, 60));
+
+        NodoGrafo9.setEditable(false);
+        NodoGrafo9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, 60));
+
+        NodoGrafo10.setEditable(false);
+        NodoGrafo10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo10ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, 60));
+
+        NodoGrafo11.setEditable(false);
+        NodoGrafo11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo11ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, 60));
+
+        NodoGrafo12.setEditable(false);
+        NodoGrafo12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo12ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, 60));
+
+        NodoGrafo13.setEditable(false);
+        NodoGrafo13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo13ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo13, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, 60));
+
+        NodoGrafo14.setEditable(false);
+        NodoGrafo14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo14ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, 60));
+
+        NodoGrafo15.setEditable(false);
+        NodoGrafo15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo15ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, 60));
+
+        NodoGrafo16.setEditable(false);
+        NodoGrafo16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodoGrafo16ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NodoGrafo16, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, 60));
+
+        Diccionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(Diccionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 170, 40));
+
+        BuscarPalabras.setText("Buscar Palabras");
+        getContentPane().add(BuscarPalabras, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 170, 40));
+
+        BuscarPalabra.setText("Buscar Palabra");
+        getContentPane().add(BuscarPalabra, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 170, 30));
+        getContentPane().add(IngresarPalabraParaBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 170, -1));
+
+        GuardarDiccionario.setText("Guardar Diccionario");
+        getContentPane().add(GuardarDiccionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 150, 40));
+
+        CargarArchivo.setText("Cargar Archivo");
+        getContentPane().add(CargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 160, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void NodoGrafo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo1ActionPerformed
+
+    private void NodoGrafo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo2ActionPerformed
+
+    private void NodoGrafo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo3ActionPerformed
+
+    private void NodoGrafo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo4ActionPerformed
+
+    private void NodoGrafo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo5ActionPerformed
+
+    private void NodoGrafo6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo6ActionPerformed
+
+    private void NodoGrafo7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo7ActionPerformed
+
+    private void NodoGrafo8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo8ActionPerformed
+
+    private void NodoGrafo9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo9ActionPerformed
+
+    private void NodoGrafo10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo10ActionPerformed
+
+    private void NodoGrafo11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo11ActionPerformed
+
+    private void NodoGrafo12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo12ActionPerformed
+
+    private void NodoGrafo13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo13ActionPerformed
+
+    private void NodoGrafo14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo14ActionPerformed
+
+    private void NodoGrafo15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo15ActionPerformed
+
+    private void NodoGrafo16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodoGrafo16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodoGrafo16ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +308,29 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BuscarPalabra;
+    private javax.swing.JButton BuscarPalabras;
+    private javax.swing.JButton CargarArchivo;
+    private javax.swing.JComboBox<String> Diccionario;
+    private javax.swing.JButton GuardarDiccionario;
+    private javax.swing.JTextField IngresarPalabraParaBuscar;
+    private javax.swing.JTextField NodoGrafo1;
+    private javax.swing.JTextField NodoGrafo10;
+    private javax.swing.JTextField NodoGrafo11;
+    private javax.swing.JTextField NodoGrafo12;
+    private javax.swing.JTextField NodoGrafo13;
+    private javax.swing.JTextField NodoGrafo14;
+    private javax.swing.JTextField NodoGrafo15;
+    private javax.swing.JTextField NodoGrafo16;
+    private javax.swing.JTextField NodoGrafo2;
+    private javax.swing.JTextField NodoGrafo3;
+    private javax.swing.JTextField NodoGrafo4;
+    private javax.swing.JTextField NodoGrafo5;
+    private javax.swing.JTextField NodoGrafo6;
+    private javax.swing.JTextField NodoGrafo7;
+    private javax.swing.JTextField NodoGrafo8;
+    private javax.swing.JTextField NodoGrafo9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

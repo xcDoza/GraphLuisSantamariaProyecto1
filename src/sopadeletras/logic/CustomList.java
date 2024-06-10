@@ -13,6 +13,30 @@ public class CustomList<T> {
     private Node<T> head;
     private int size;
 
+    public static class Node<T> {
+
+        T data;
+        Node<T> next;
+
+        Node(T data) {
+            this.data = data;
+            this.next = null;
+        }
+
+        public T getData() {
+            return data;
+        }
+
+        public Node<T> getNext() {
+            return next;
+        }
+        
+        public void setNext(Node<T> next) {
+            this.next = next;
+        }
+        
+    }
+
     public CustomList() {
         this.head = null;
         this.size = 0;
@@ -24,37 +48,18 @@ public class CustomList<T> {
             head = newNode;
         } else {
             Node<T> current = head;
-            while (current.getNext() != null) {
-                current = current.getNext();
+            while (current.next != null) {
+                current = current.next;
             }
-            current.setNext(newNode);
+            current.next = newNode;
         }
         size++;
     }
-
-    public boolean remove(T data) {
-        if (head == null) {
-            return false;
-        }
-
-        if (head.getData().equals(data)) {
-            head = head.getNext();
-            size--;
-            return true;
-        }
-
-        Node<T> current = head;
-        while (current.getNext() != null) {
-            if (current.getNext().getData().equals(data)) {
-                current.setNext(current.getNext().getNext());
-                size--;
-                return true;
-            }
-            current = current.getNext();
-        }
-        return false;
+    
+    public Node<T> getHead() {
+        return head;
     }
-
+    
     public boolean contains(T data) {
         Node<T> current = head;
         while (current != null) {
@@ -65,13 +70,23 @@ public class CustomList<T> {
         }
         return false;
     }
-
-    public int size() {
-        return size;
-    }
-
-    public Node<T> getHead() {
-        return head;
+    
+    public void remove(T data) {
+        if (head == null) {
+            return;
+        }
+        if (head.getData().equals(data)) {
+            head = head.getNext();
+            return;
+        }
+        Node<T> current = head;
+        while (current.getNext() != null) {
+            if (current.getNext().getData().equals(data)) {
+                current.setNext(current.getNext().getNext());
+                return;
+            }
+            current = current.getNext();
+        }
     }
 
     public T get(int index) {
@@ -80,8 +95,12 @@ public class CustomList<T> {
         }
         Node<T> current = head;
         for (int i = 0; i < index; i++) {
-            current = current.getNext();
+            current = current.next;
         }
-        return current.getData();
+        return current.data;
+    }
+
+    public int size() {
+        return size;
     }
 }
